@@ -2346,7 +2346,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary:focus, .btn-primary.focus {
-  box-shadow: 0 0 0 0.2rem #5a6268;
+  box-shadow: 0 0 0 0.2rem #BA55D3;
 }
 
 .btn-primary.disabled, .btn-primary:disabled {
