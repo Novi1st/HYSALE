@@ -1,0 +1,23 @@
+create database hysale_db;
+use hysale_db;
+
+create table Customer (
+Username VARCHAR(10) PRIMARY KEY,
+Password VARCHAR(10) NOT NULL,
+NamaCustomer varchar(30) not null,
+Email varchar(30) not null,
+TempatLahir varchar(20),
+TglLahir date,
+Telephone varchar(15),
+Alamat varchar(50)
+);
+
+CREATE TABLE Booking (
+Id_Booking varchar(5) primary KEY,
+    Tanggal_Booking date,
+    Username varchar(10),
+    CONSTRAINT `hysale_customer`
+		FOREIGN KEY (Username) REFERENCES customer (Username)
+		ON DELETE CASCADE
+		ON UPDATE RESTRICT
+);
