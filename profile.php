@@ -60,7 +60,7 @@ $row = mysqli_fetch_array($result);
 <tbody>
   <tr>
     <th width="25%" rowspan="7"><?php
-            echo "<img src='../uploads/".$row['foto']."' width='125' height='150'/>";
+            echo "<img src='uploads/".$row['foto']."' width='125' height='150'/>";
             ?></th>
     <td width="25%" valign="top"><div align="left">Nama</div></td>
     <td width="50%" valign="top"><?php echo $row['NamaCustomer'] ?></td>

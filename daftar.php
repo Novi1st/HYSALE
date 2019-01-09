@@ -53,7 +53,7 @@ require_once ("connection.php");
         <p>Registration</p>
       </div>
       
-      <form action="control_daftar.php" method="post">
+      <form action="" method="post" enctype="multipart/form-data">
         <fieldset>
           <legend>Data Diri</legend>
           <label for="name"><b>Nama Lengkap</b></label>
@@ -112,10 +112,25 @@ require_once ("connection.php");
             if(isset($_POST['submit'])){
                   $foto = $_FILES["foto"]["name"];
                   $source = $_FILES["foto"]["tmp_name"];
-                  $folder='../uploads/';
-                  move_uploaded_file($source, $folder.$foto);
-                }
+                  //tentukan lokasi file akan dipindahkan
+                  $folder='uploads/';
+                  //pindahkan file
+
+                  
+
+
+$query="insert into customer (Username,
+    Password,NamaCustomer,Email, Gender, TempatLahir,TglLahir,Alamat,foto, Telephone) values
+    ('".$_POST['uname']."','".$_POST['password1']."','".$_POST['name']."','".$_POST['email']."','".$_POST['gender']."','".$_POST['tempatLahir']."','".$_POST['tanggalLahir']."','".$_POST['alamat']."','$foto','".$_POST['telp']."')";
+    mysqli_query($con, $query);
+    move_uploaded_file($source, $folder.$foto);
+
+     $_SESSION['User']=$_POST['uname'];
+      header('Location: Welcome.php?status=sukses');
+   
+           }     
             ?>
+            
       </div>
                <div class="punya"><p>Have an account? <a href="login.php">Login</a></p></div>
       </form>
