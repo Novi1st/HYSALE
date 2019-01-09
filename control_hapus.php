@@ -1,14 +1,15 @@
 <?php
 
 require_once('connection.php');
+session_start();
 
-if( isset($_GET['idCustomer'])){
+if( isset($_SESSION['User'])){
 	
 	// ambil id_dokter dari query string
-	$username = $_GET['idCustomer'];
+	$username = $_SESSION['User'];
 	
 	// buat query hapus
-	$sql = "DELETE FROM customer WHERE idCustomer=$username";
+	$sql = "DELETE FROM customer WHERE Username='$username'";
 	$query = mysqli_query($con, $sql);
 	
 	// query hapus berhasil

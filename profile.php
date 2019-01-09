@@ -47,64 +47,103 @@ session_start();
 </nav>
 <?php
 $username=$_SESSION['User'];
-$result3 = mysqli_query($con,"SELECT * FROM customer where Username='$username'");
-while($row3 = mysqli_fetch_array($result3))
-{ 
-$nama=$row3['NamaCustomer'];
-$id=$row3['idCustomer'];
-$email=$row3['Email'];
-$gender=$row3['Gender'];
-$alamat=$row3['Alamat'];
-$telephone=$row3['Telephone'];
-$foto=$row3['foto'];
-$tempatlahir=$row3['TempatLahir'];
-$tgllahir=$row3['TglLahir'];
-}
+$result = mysqli_query($con,"SELECT * FROM customer where Username='$username'");
+$row = mysqli_fetch_array($result);
 ?>
-<table width="398" border="0" align="center" cellpadding="0">
+<div class="container-fluid">
+<table class="table table-sm">
+  <thead>
   <tr>
-    <td colspan="2" height="26" colspan="2">Your Profile Information </td>
+    <th colspan="3" scope="col"><?php echo $username ?> Profile Information </th>
   </tr>
+</thead>
+<tbody>
   <tr>
-    <td colspan="2" valign="top"><?php echo $username ?></td>
-  </tr>
-  <tr>
-    <td width="129" rowspan="5"><img src="<?php echo $foto ?>" width="129" height="129" alt="no image found"/></td>
-    <td width="82" valign="top"><div align="left">Nama:</div></td>
-    <td width="165" valign="top"><?php echo $nama ?></td>
+    <th width="25%" rowspan="7"><img src="<?php echo $row['Foto'] ?>" width="129" height="129" alt="no image found"/></th>
+    <td width="25%" valign="top"><div align="left">Nama</div></td>
+    <td width="50%" valign="top"><?php echo $row['NamaCustomer'] ?></td>
   </tr>
   <tr>
     <td valign="top"><div align="left">Email:</div></td>
-    <td valign="top"><?php echo $email ?></td>
+    <td valign="top"><?php echo $row['Email'] ?></td>
   </tr>
   <tr>
     <td valign="top"><div align="left">Jenis Kelamin</div></td>
-    <td valign="top"><?php echo $gender ?></td>
+    <td valign="top"><?php echo $row['Gender'] ?></td>
   </tr>
   <tr>
     <td valign="top"><div align="left">Alamat:</div></td>
-    <td valign="top"><?php echo $alamat ?></td>
+    <td valign="top"><?php echo $row['Alamat'] ?></td>
   </tr>
   <tr>
     <td valign="top"><div align="left">Telephone:</div></td>
-    <td valign="top"><?php echo $telephone ?></td>
+    <td valign="top"><?php echo $row['Telephone'] ?></td>
   </tr>
   <tr>
     <td valign="top"><div align="left">Tempat Lahir: </div></td>
-    <td valign="top"><?php echo $tempatlahir ?></td>
+    <td valign="top"><?php echo $row['TempatLahir'] ?></td>
   </tr>
   <tr>
     <td valign="top"><div align="left">Tanggal Lahir: </div></td>
-    <td valign="top"><?php echo $tgllahir ?></td>
+    <td valign="top"><?php echo $row['TglLahir'] ?></td>
   </tr>
   <tr>
   	<td>
-		<a href="formEditProfile.php?idCustomer=<?php echo $id?>">Edit</a>
+		<a href="formEditProfile.php?Username=<?php echo $row['Username']?>">Edit</a>
 		</td>
 		<td>
-		<a href="control_hapus.php?idCustomer=<?php echo $id?>">Hapus Akun</a>
+		<a href="control_hapus.php?Username=<?php echo $row['Username']?>">Hapus Akun</a>
 	</td>
 	</tr>
+</tbody>
 </table>
+</div>
+
+<footer class="container py-5">
+      <div class="row">
+        <div class="col-12 col-md">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+          <small class="d-block mb-3 text-muted">© 2017-2018</small>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Features</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">Cool stuff</a></li>
+            <li><a class="text-muted" href="#">Random feature</a></li>
+            <li><a class="text-muted" href="#">Team feature</a></li>
+            <li><a class="text-muted" href="#">Stuff for developers</a></li>
+            <li><a class="text-muted" href="#">Another one</a></li>
+            <li><a class="text-muted" href="#">Last time</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Resources</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">Resource</a></li>
+            <li><a class="text-muted" href="#">Resource name</a></li>
+            <li><a class="text-muted" href="#">Another resource</a></li>
+            <li><a class="text-muted" href="#">Final resource</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Resources</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">Business</a></li>
+            <li><a class="text-muted" href="#">Education</a></li>
+            <li><a class="text-muted" href="#">Government</a></li>
+            <li><a class="text-muted" href="#">Gaming</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>About</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">Team</a></li>
+            <li><a class="text-muted" href="#">Locations</a></li>
+            <li><a class="text-muted" href="#">Privacy</a></li>
+            <li><a class="text-muted" href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>   
 </body>
 </html>

@@ -1,18 +1,24 @@
 <?php
 
 require_once('connection.php');
+session_start();
 
 // cek button simpan
 if(isset($_POST['simpan'])){
 	
 	// ambil data dari form
-	$id = $_POST['idCustomer'];
-	$username=$_POST['Username'];
+	$username=$_SESSION['User'];
 	$nama=$_POST['NamaCustomer'];
-	$alamat=$_POST['Alamat'];
+	$password = $_POST['password'];
+	$email = $_POST['email'];
+	$gender = $_POST['gender'];
+	$tempatLahir = $_POST['tempatLahir'];
+	$tglLahir = $_POST['tanggalLahir'];
+	$alamat=$_POST['alamat'];
+	$telp=$_POST['telp'];
 	
 	// buat query update
-	$sql = "UPDATE customer SET Username='$username', NamaCustomer='$nama', Alamat='$alamat' WHERE idCustomer=$id";
+	$sql = "UPDATE customer SET Username='$username', NamaCustomer='$nama', Password='$password', Email='$email', Gender='$gender', TempatLahir='$tempatLahir', TglLahir='$tglLahir', Telephone='$telp', Alamat=' $alamat' WHERE Username='$username'";
 	$query = mysqli_query($con, $sql);
 	
 	// apakah query update berhasil?

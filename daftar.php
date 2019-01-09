@@ -1,6 +1,8 @@
 <?php
 session_start();
+require_once ("connection.php");
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -66,86 +68,23 @@ session_start();
           <br>
           <input type="password" name="password1" placeholder="Password"></input>
           <br>
-          <label for="password"><b>Confirm Password</b></label>
-          <br>
-          <input type="password" name="password2" placeholder="Confirm Your Password"></input>
-          <br>
           <label for="email"><b>Email</b></label>
           <br>
           <input type="text" name="email" placeholder="Email-e.g.novinurkhaeni@gmail.com"></input>
           <br>
+          <label for="gender"><b>Jenis Kelamin</b></label>
+          <br>
+              <input type="radio" name="gender" value="Laki-laki">Laki-laki</input>
+              <input type="radio" name="gender" value="Perempuan">Perempuan</input>
+          <br>
               <label for="tempatLahir"><b>Tempat Lahir</b></label>
           <br>
           <input type="text" name="tempatLahir" placeholder="Tempat Lahir"></input>
+
  
           <br> 
-              <label><b>Tanggal Lahir</b></label><br>
-              <label for="date" >Date</label>
-              <select name="date" >  
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>13</option>
-                <option>14</option>
-                <option>15</option>
-                <option>16</option> 
-                <option>17</option>
-                <option>18</option>
-                <option>19</option>
-                <option>20</option> 
-                <option>21</option> 
-                <option>22</option> 
-                <option>23</option> 
-                <option>24</option> 
-                <option>25</option> 
-                <option>26</option> 
-                <option>27</option> 
-                <option>28</option> 
-                <option>29</option> 
-                <option>30</option> 
-                <option>31</option>      
-              </select> &nbsp;
-
-              <label for="month" >Month</label> 
-              <select name="month" >    
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option> 
-                <option>12</option>   
-              </select> &nbsp;
-
-              <label for="year" > Year </label> 
-              <select name="year" >    
-                <option>1989</option>
-                <option>1990</option>
-                <option>1991</option>
-                <option>1992</option>
-                <option>1993</option>
-                <option>1994</option>
-                <option>1995</option>
-                <option>1996</option>
-                <option>1997</option>
-                <option>1998</option>
-                <option>1999</option> 
-                <option>2000</option>   
-              </select>&nbsp;
+              <label for="tanggalLahir"><b>Tanggal Lahir</b></label>
+              <input type="date" name="tanggalLahir" placeholder="Tanggal Lahir"></input>
               <br> 
           <label for="alamat"><b>Alamat</b></label>
           <br>
