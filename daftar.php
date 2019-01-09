@@ -94,6 +94,11 @@ require_once ("connection.php");
           <br>
           <input type="text" name="telp" placeholder="No Telephone"></input>
           <br>  
+          <tr>
+            <td><label for="foto">Pilih File</td>
+            <td><input type="file" name="foto" value=""></td>
+          </tr>
+    <br>
         </fieldset>
         <br>
               <input name="submit" type="submit" value="Insert">
@@ -103,6 +108,14 @@ require_once ("connection.php");
           <td><a href="https://facebook.com/"> <img src="contact/fb.png"><input type="button" name="submitFB"  value="Signup With Facebook"/></a></td>
           </tr>
         </table>
+            <?php
+            if(isset($_POST['submit'])){
+                  $foto = $_FILES["foto"]["name"];
+                  $source = $_FILES["foto"]["tmp_name"];
+                  $folder='../uploads/';
+                  move_uploaded_file($source, $folder.$foto);
+                }
+            ?>
       </div>
                <div class="punya"><p>Have an account? <a href="login.php">Login</a></p></div>
       </form>

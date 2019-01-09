@@ -16,9 +16,13 @@ if(isset($_POST['simpan'])){
 	$tglLahir = $_POST['tanggalLahir'];
 	$alamat=$_POST['alamat'];
 	$telp=$_POST['telp'];
+	$foto = $_FILES["foto"]["name"];
+    $source = $_FILES["foto"]["tmp_name"];
+    $folder='../uploads/';
+    move_uploaded_file($source, $folder.$foto);
 	
 	// buat query update
-	$sql = "UPDATE customer SET Username='$username', NamaCustomer='$nama', Password='$password', Email='$email', Gender='$gender', TempatLahir='$tempatLahir', TglLahir='$tglLahir', Telephone='$telp', Alamat=' $alamat' WHERE Username='$username'";
+	$sql = "UPDATE customer SET foto='$foto', Username='$username', NamaCustomer='$nama', Password='$password', Email='$email', Gender='$gender', TempatLahir='$tempatLahir', TglLahir='$tglLahir', Telephone='$telp', Alamat=' $alamat' WHERE Username='$username'";
 	$query = mysqli_query($con, $sql);
 	
 	// apakah query update berhasil?

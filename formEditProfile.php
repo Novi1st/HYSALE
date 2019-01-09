@@ -84,6 +84,11 @@ if( mysqli_num_rows($query) < 1 ){
 			<input type="text" id="username" name="username" value="<?php echo $customer['Username'] ?>" />
 		</p>
 		<br>
+		<tr>
+                <label for="foto">Upload Foto </label>
+                <td><input type="file" name="foto" class="btn btn-primary"></td>
+            </tr>
+            <br>
 			<label for="NamaCustomer">Nama </label>
 			<br>
 			<input type="text" name="NamaCustomer" placeholder="nama lengkap" value="<?php echo $customer['NamaCustomer'] ?>" />

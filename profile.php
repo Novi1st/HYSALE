@@ -59,7 +59,9 @@ $row = mysqli_fetch_array($result);
 </thead>
 <tbody>
   <tr>
-    <th width="25%" rowspan="7"><img src="<?php echo $row['Foto'] ?>" width="129" height="129" alt="no image found"/></th>
+    <th width="25%" rowspan="7"><?php
+            echo "<img src='../uploads/".$row['foto']."' width='125' height='150'/>";
+            ?></th>
     <td width="25%" valign="top"><div align="left">Nama</div></td>
     <td width="50%" valign="top"><?php echo $row['NamaCustomer'] ?></td>
   </tr>
