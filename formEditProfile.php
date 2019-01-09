@@ -84,11 +84,6 @@ if( mysqli_num_rows($query) < 1 ){
 			<input type="text" id="username" name="username" value="<?php echo $customer['Username'] ?>" />
 		</p>
 		<br>
-		<tr>
-                <label for="foto">Upload Foto </label>
-                <td><input type="file" name="foto" class="btn btn-primary"></td>
-            </tr>
-            <br>
 			<label for="NamaCustomer">Nama </label>
 			<br>
 			<input type="text" name="NamaCustomer" placeholder="nama lengkap" value="<?php echo $customer['NamaCustomer'] ?>" />
@@ -125,12 +120,12 @@ if( mysqli_num_rows($query) < 1 ){
           <br>
           <input type="text" name="telp" value="<?php echo $customer['Telephone']?>"></input>
           <br>  
+            <br>
 
 	</fieldset>
 			<input type="submit" value="Simpan" name="simpan" />	
 	</form>	
 </div>
-	
 <footer class="container py-5">
       <div class="row">
         <div class="col-12 col-md">
@@ -179,3 +174,4 @@ if( mysqli_num_rows($query) < 1 ){
     </footer>   
 </body>
 </html>
+   

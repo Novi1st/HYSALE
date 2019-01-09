@@ -51,17 +51,17 @@ require_once ("connection.php");
         <p>Login</p>
       </div>
       
-      <form action="" method="post">
-          <label for="username"><b>Username</b></label>
+      <form action="process.php" method="post">
+          <label for="uname"><b>Username</b></label>
           <br>
-          <input type="text" name="username" placeholder="Username"></input>
+          <input type="text" name="uname" placeholder="Username"></input>
           <br>
-          <label for="password"><b>Password</b></label>
+          <label for="psw"><b>Password</b></label>
           <br>
-          <input type="password" name="password1" placeholder="Password"></input>
+          <input type="password" name="psw" placeholder="Password"></input>
           <br>
         <br>
-              <input name="submit" type="submit" value="login">
+              <input name="login" type="submit" value="login">
                  <div class="fb">
         <table>
           <tr>

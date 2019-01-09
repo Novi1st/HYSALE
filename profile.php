@@ -50,7 +50,7 @@ $username=$_SESSION['User'];
 $result = mysqli_query($con,"SELECT * FROM customer where Username='$username'");
 $row = mysqli_fetch_array($result);
 ?>
-<div class="container-fluid">
+<div class="container">
 <table class="table table-sm">
   <thead>
   <tr>
@@ -60,7 +60,7 @@ $row = mysqli_fetch_array($result);
 <tbody>
   <tr>
     <th width="25%" rowspan="7"><?php
-            echo "<img src='uploads/".$row['foto']."' width='125' height='150'/>";
+            echo "<img src='uploads/".$row['foto']."' width='180' height='250'/>";
             ?></th>
     <td width="25%" valign="top"><div align="left">Nama</div></td>
     <td width="50%" valign="top"><?php echo $row['NamaCustomer'] ?></td>
@@ -90,7 +90,7 @@ $row = mysqli_fetch_array($result);
     <td valign="top"><?php echo $row['TglLahir'] ?></td>
   </tr>
   <tr>
-  	<td>
+  	<td colspan="2">
 		<a href="formEditProfile.php?Username=<?php echo $row['Username']?>">Edit</a>
 		</td>
 		<td>

@@ -47,68 +47,71 @@ require_once ("connection.php");
   </div>
 </nav>
 
-  <div class="clear"></div>
-      <div class="container-form">
-      <div class="registrasi">
-        <p>Registration</p>
-      </div>
+<div class="clear"></div>
+  <div class="container-form">
+  <div class="registrasi">
+    <p>Registration</p>
+  </div>
       
-      <form action="" method="post" enctype="multipart/form-data">
-        <fieldset>
-          <legend>Data Diri</legend>
-          <label for="name"><b>Nama Lengkap</b></label>
-          <br>
-          <input type="text" name="name" placeholder="Nama Lengkap"></input>
-          <br>
-          <label for="uname"><b>Username</b></label>
-          <br>
-          <input type="text" name="uname" placeholder="Username"></input>
-          <br>
-          <label for="password"><b>Password</b></label>
-          <br>
-          <input type="password" name="password1" placeholder="Password"></input>
-          <br>
-          <label for="email"><b>Email</b></label>
-          <br>
-          <input type="text" name="email" placeholder="Email-e.g.novinurkhaeni@gmail.com"></input>
-          <br>
-          <label for="gender"><b>Jenis Kelamin</b></label>
-          <br>
-              <input type="radio" name="gender" value="Laki-laki">Laki-laki</input>
-              <input type="radio" name="gender" value="Perempuan">Perempuan</input>
-          <br>
-              <label for="tempatLahir"><b>Tempat Lahir</b></label>
-          <br>
-          <input type="text" name="tempatLahir" placeholder="Tempat Lahir"></input>
-
- 
-          <br> 
-              <label for="tanggalLahir"><b>Tanggal Lahir</b></label>
-              <input type="date" name="tanggalLahir" placeholder="Tanggal Lahir"></input>
-              <br> 
-          <label for="alamat"><b>Alamat</b></label>
-          <br>
-          <input type="text" name="alamat" placeholder="Alamat"></input>
-          <br> 
-          <label for="telp"><b>No Telephone</b></label>
-          <br>
-          <input type="text" name="telp" placeholder="No Telephone"></input>
-          <br>  
-          <tr>
-            <td><label for="foto">Pilih File</td>
-            <td><input type="file" name="foto" value=""></td>
-          </tr>
+  <form action="" method="post" enctype="multipart/form-data">
+    <fieldset>
+      <legend>Data Diri</legend>
+      <label for="name"><b>Nama Lengkap</b></label>
+      <br>
+      <input type="text" name="name" placeholder="Nama Lengkap"></input>
+      <br>
+      <label for="uname"><b>Username</b></label>
+      <br>
+      <input type="text" name="uname" placeholder="Username"></input>
+      <br>
+      <label for="password"><b>Password</b></label>
+      <br>
+      <input type="password" name="password1" placeholder="Password"></input>
+      <br>
+      <label for="email"><b>Email</b></label>
+      <br>
+      <input type="text" name="email" placeholder="Email-e.g.novinurkhaeni@gmail.com"></input>
+      <br>
+      <label for="gender"><b>Jenis Kelamin</b></label>
+      <br>
+      <input type="radio" name="gender" value="Laki-laki">Laki-laki</input>
+      <input type="radio" name="gender" value="Perempuan">Perempuan</input>
+      <br>
+      <label for="tempatLahir"><b>Tempat Lahir</b></label>
+      <br>
+      <input type="text" name="tempatLahir" placeholder="Tempat Lahir"></input>
+      <br> 
+      <label for="tanggalLahir"><b>Tanggal Lahir</b></label>
+      <input type="date" name="tanggalLahir" placeholder="Tanggal Lahir"></input>
+      <br> 
+      <label for="alamat"><b>Alamat</b></label>
+      <br>
+      <input type="text" name="alamat" placeholder="Alamat"></input>
+      <br> 
+      <label for="telp"><b>No Telephone</b></label>
+      <br>
+      <input type="text" name="telp" placeholder="No Telephone"></input>
+      <br>  
+      <tr>
+      <td><label for="foto">Pilih File</td>
+      <td><input type="file" name="foto" value=""></td>
+      </tr>
+      <br>
+    </fieldset>
     <br>
-        </fieldset>
-        <br>
-              <input name="submit" type="submit" value="Insert">
-                 <div class="fb">
-        <table>
-          <tr>
+    <input name="submit" type="submit" value="Insert">
+    <div class="fb">
+      <table>
+        <tr>
           <td><a href="https://facebook.com/"> <img src="contact/fb.png"><input type="button" name="submitFB"  value="Signup With Facebook"/></a></td>
-          </tr>
-        </table>
-            <?php
+        </tr>
+      </table>
+            
+    </div>
+    <div class="punya"><p>Have an account? <a href="login.php">Login</a></p></div>
+</form>
+</div>
+<?php
             if(isset($_POST['submit'])){
                   $foto = $_FILES["foto"]["name"];
                   $source = $_FILES["foto"]["tmp_name"];
@@ -119,23 +122,29 @@ require_once ("connection.php");
                   
 
 
-$query="insert into customer (Username,
+ $query="insert into customer (Username,
     Password,NamaCustomer,Email, Gender, TempatLahir,TglLahir,Alamat,foto, Telephone) values
     ('".$_POST['uname']."','".$_POST['password1']."','".$_POST['name']."','".$_POST['email']."','".$_POST['gender']."','".$_POST['tempatLahir']."','".$_POST['tanggalLahir']."','".$_POST['alamat']."','$foto','".$_POST['telp']."')";
-    mysqli_query($con, $query);
+    $hasil = mysqli_query($con, $query);
     move_uploaded_file($source, $folder.$foto);
+    if($hasil ) 
+    {
+      // kalau berhasil menampilkan status=sukses
+      $_SESSION['User']=$_POST['uname'];
+      header('Location: ./Welcome.php?status=sukses');
+    } 
 
-     $_SESSION['User']=$_POST['uname'];
-      header('Location: Welcome.php?status=sukses');
-   
-           }     
+    else 
+    {
+      // kalau gagal menampilkan status=gagal
+      header('Location: ./daftar.php?status=gagal');
+    } 
+  }               
+                
             ?>
-            
-      </div>
-               <div class="punya"><p>Have an account? <a href="login.php">Login</a></p></div>
-      </form>
-    </div>
 </body>
+
+
 <footer class="container py-5">
       <div class="row">
         <div class="col-12 col-md">
