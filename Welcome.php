@@ -13,7 +13,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 
-<body style="height:1500px">
+<body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
   <a class="navbar-brand" href="#">
@@ -39,15 +39,35 @@
       </li>
     </ul>
 
+    <?php if(isset($_GET['status'])): ?>
+    <p>
+    <?php
+      if($_GET['status'] == 'sukses'){
+      echo "<h6>Registrasi berhasil!</h6>";
+      echo '<img width="50" src="images/success.png"> ';
+      } else {
+        echo "Registrasi gagal!";
+      }
+    ?>
+    </p>
+  <?php endif; ?>
+
     <?php 
 // mengaktifkan session
 session_start();
 
 // menampilkan pesan selamat datang
-echo "Hai, ". $_SESSION['User'];
+if (!isset($_SESSION['User'])) {
+  # code...
+  header("Location:hysale.php");
+}
+else{
+echo '<a href="profile.php">Hai, '. $_SESSION['User'] .'</a>';
+
+}
 
 ?>
- 	<a href="logout.php" class="nav-link"> Logout</a>
+ 	<a href="control_logout.php" class="nav-link"> Logout</a>
   </div>
 </nav>
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">

@@ -250,6 +250,11 @@
             <label for="psw">Password</label>
             <input type="password" class="form-control" name="psw" placeholder="Password">
           </div>
+          <div class="checkbox">
+                  <label>
+                    <input name="remember" type="checkbox" value="Remember Me"> Save Password
+                  </label>
+                </div>
           <div class="form-group">
             <label>Sudah Punya Akun? </label><a href="daftar.php">Signin</a>
           </div>

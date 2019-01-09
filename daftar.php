@@ -1,5 +1,5 @@
 <?php
-require_once ("connection.php");
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -51,16 +51,16 @@ require_once ("connection.php");
         <p>Registration</p>
       </div>
       
-      <form action="" method="post">
+      <form action="control_daftar.php" method="post">
         <fieldset>
           <legend>Data Diri</legend>
           <label for="name"><b>Nama Lengkap</b></label>
           <br>
           <input type="text" name="name" placeholder="Nama Lengkap"></input>
           <br>
-          <label for="username"><b>Username</b></label>
+          <label for="uname"><b>Username</b></label>
           <br>
-          <input type="text" name="username" placeholder="Username"></input>
+          <input type="text" name="uname" placeholder="Username"></input>
           <br>
           <label for="password"><b>Password</b></label>
           <br>
@@ -216,25 +216,3 @@ require_once ("connection.php");
       </div>
     </footer>
 </html> 
-
-<?php
-  if(isset($_POST['submit']))
-  {
-    $tgl = $_POST['date'];
-    $bln = $_POST['month'];
-    $thn = $_POST['year'];
-
-  $query="insert into customer (Username,
-  Password,NamaCustomer,Email,TempatLahir,TglLahir,Alamat,Telephone) values
-  ('".$_POST['username']."','".$_POST['password']."','".$_POST['name']."','".$_POST['email']."','".$_POST['tempatLahir']."','".$thn."-".$bln."-".$tgl."','".$_POST['alamat']."','".$_POST['telp']."')";
-
-   //eksekusi query
-  $hasil=mysqli_query($con,$query) /*or die  (mysqli_error())*/ ;
-  ?>
-
-  <script>
-  alert("data sukses ditambahkan");
-  window.location='profile.php';</script>
-  <?php
-  }
-?>
