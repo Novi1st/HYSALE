@@ -21,3 +21,8 @@ Id_Booking varchar(5) primary KEY,
 		ON DELETE CASCADE
 		ON UPDATE RESTRICT
 );
+
+CREATE TABLE Pakaian (
+Id_Pakaian varchar(5) primary KEY,
+    Nama_Pakaian varchar(30) not null
+)
